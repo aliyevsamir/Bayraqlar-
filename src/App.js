@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import countries from "./countries.json";
+import "./App.css";
+import Countries from "./Components/Countries.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    country: "",
+    searchResult: ""
+  };
+
+  handleChange = e => {
+    this.setState({
+      ...this.state,
+      country: e.target.value
+    });
+  };
+
+  handleSearch = () => {
+    this.setState({
+      ...this.state,
+      searchResult: this.state.country
+    });
+  };
+
+  render() {
+    let entries = Object.entries(countries);
+
+    console.log(entries);
+
+    return (
+      <div className="App">
+        <span className="countryCount">248 </span>Countries{" "}
+        <input type="text" onChange={this.handleChange}></input>
+        <button className="button" onClick={this.handleSearch}>
+          Search
+        </button>
+        <Countries countries={entries} searchResult={this.state.searchResult} />
+      </div>
+    );
+  }
 }
-
-export default App;
