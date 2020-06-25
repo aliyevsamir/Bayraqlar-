@@ -1,32 +1,44 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from 'react';
+import './Country.css';
 
 export default class Country extends Component {
   render() {
-    let { country, searchResult } = this.props;
-    let countryImg = country[0].toLowerCase();
-    let countryName = country[1];
+    const { country, searchValue } = this.props;
+    const countryImg = country[0].toLowerCase();
+    const countryName = country[1];
+    const startIndex = countryName
+      .toLowerCase()
+      .indexOf(searchValue.toLowerCase());
+    const lastIndex = startIndex + searchValue.length - 1;
 
-    // console.log(
-    //   countryName.substring(0, searchResult.length),
-    //   "-----",
-    //   searchResult
-    // );
-
-    let template =
-      searchResult.toLowerCase() ==
-      countryName.substring(0, searchResult.length).toLowerCase() ? (
-        <div className="country">
-          <div className="country-flag">
-            <img
-              src={`svg/${countryImg}.svg`}
-              alt=""
-              style={{ height: "20px", width: "20px" }}
-            />
-          </div>
-          <div className="country-name">{country[1]}</div>
+    return (
+      <div className='country'>
+        <div className='country-flag'>
+          <img
+            src={`svg/${countryImg}.svg`}
+            alt={`flag of ${countryName}`}
+          />
         </div>
-      ) : null;
-
-    return template;
+        <div className='country-name'>
+          {startIndex !== 0
+            ? countryName.substring(0, startIndex)
+            : null}
+          {startIndex !== -1 ? (
+            <Fragment>
+              <span className='highlighter'>
+                {countryName.substring(
+                  startIndex,
+                  lastIndex + 1
+                )}
+                {/* {searchValue} */}
+              </span>
+              {countryName.substring(lastIndex + 1)}
+            </Fragment>
+          ) : (
+            countryName.substring(startIndex + 1)
+          )}
+        </div>
+      </div>
+    );
   }
 }

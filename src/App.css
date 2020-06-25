@@ -2,56 +2,62 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-align: center;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 50px;
-}
-
-.country {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-.country-flag {
-  margin-right: 15px;
 }
 
 body {
   background-image: linear-gradient(to bottom left, #e9cae1, #51be49);
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 .App .countryCount {
   font-size: 14px;
-  font-weight: bold;
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 10px;
-  display: inline-block;
-  margin: 10px;
+  font-weight: 500;
+  min-height: 30px;
+  padding: 0 5px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+  margin: 10px 0;
   color: #fff;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.App input {
+.App .searchBox {
   min-width: 400px;
   min-height: 30px;
-  margin: 0 10px 0 10px;
-  border-radius: 10px;
+  margin: 0 10px;
+  border-radius: 5px;
   border: none;
 }
 
-.App button {
+.App .searchBox:focus {
+  outline: none;
+}
+
+.App .button {
   padding: 0 30px;
-  min-height: 30px;
-  border-radius: 10px;
+  outline: none;
   border: none;
+  min-height: 30px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
+  font-size: 16px;
 }
 
 .App .countries {

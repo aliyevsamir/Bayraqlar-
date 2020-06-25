@@ -1,0 +1,26 @@
+.country {
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 20px;
+}
+
+.highlighter {
+  background-color: black;
+  color: white;
+}
+
+.country-name {
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.country-flag img {
+  height: 80px;
+  width: 80px;
+  transform: scale(1.1);
+  margin-left: 10px;
+}
